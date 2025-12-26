@@ -64,7 +64,7 @@ body {
 .header-text h1 {
   font-size: 20px;
   margin: 0;
-  color: #1f3c88;
+  color: #0bb3d8;
 }
 
 .header-text p {
@@ -145,12 +145,38 @@ body {
   from { transform: translateY(40px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+
+/* VIDEO BACKGROUND */
+.video-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0; /* behind all modal content */
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.video-bg iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so clicks go through to modal */
+}
+.modal-content > *:not(.video-bg) {
+  position: relative;
+  z-index: 1; /* modal content above video */
+}
 </style>
 </head>
 
 <body>
 <div class="modal">
   <div class="modal-content">
+    <!-- BACKGROUND VIDEO -->
+    <div class="video-bg">
+      <iframe 
+        src="https://www.youtube.com/embed/n77PVbrrCL4?autoplay=1&mute=1&loop=1&playlist=n77PVbrrCL4&controls=0&modestbranding=1&showinfo=0&rel=0"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
 
     <!-- HEADER -->
     <div class="header">
