@@ -10,9 +10,7 @@
 
 <style>
 /* ===== GLOBAL ===== */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -24,7 +22,7 @@ body {
   justify-content: center;
 }
 
-/* ===== POPUP / MODAL ===== */
+/* ===== MODAL ===== */
 .modal {
   width: 100%;
   height: 100%;
@@ -37,7 +35,7 @@ body {
 
 .modal-content {
   width: 100%;
-  max-width: 420px;
+  max-width: 500px;
   background: #ffffff;
   border-radius: 18px;
   padding: 20px;
@@ -46,159 +44,220 @@ body {
 
 /* ===== HEADER ===== */
 .header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
-.header h1 {
+.header img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-text h1 {
   font-size: 20px;
   margin: 0;
   color: #1f3c88;
 }
 
-.header p {
+.header-text p {
   font-size: 14px;
   color: #666;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 /* ===== PRODUCT LIST ===== */
 .product {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background: #f7f9fc;
   padding: 14px;
   margin-bottom: 12px;
   border-radius: 12px;
+  cursor: pointer;
   transition: 0.2s;
+  display: flex;
+  flex-direction: column; /* makes dropdown appear below header */
 }
 
-.product:hover {
-  background: #eef2ff;
-}
+.product:hover { background: #eef2ff; }
 
-/* LEFT SIDE */
-.product-left {
+.product-header {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* icon left, name center, arrow right */
   gap: 12px;
 }
 
-.icon {
-  font-size: 22px;
+.icon { font-size: 22px; color: #1f3c88; }
+.product-name { font-size: 15px; font-weight: 600; color: #333; flex-grow:1; }
+
+/* Dropdown hint arrow */
+.dropdown-arrow {
+  font-size: 16px;
   color: #1f3c88;
+  transition: transform 0.3s;
 }
 
-.product-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
+/* ===== DROPDOWN ITEMS ===== */
+.dropdown {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 8px;
+  padding-left: 34px;
 }
 
-/* DOWNLOAD BUTTON */
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eef2ff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
 .download-btn {
   text-decoration: none;
   background: linear-gradient(135deg, #1f3c88, #3a6df0);
   color: #fff;
-  font-size: 13px;
-  padding: 8px 14px;
-  border-radius: 20px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 14px;
   white-space: nowrap;
 }
 
 /* ===== MOBILE FIRST ===== */
 @media (max-width: 480px) {
-  .modal-content {
-    max-width: 100%;
-    height: auto;
-    border-radius: 16px;
-  }
-
-  .header h1 {
-    font-size: 18px;
-  }
-
-  .product-name {
-    font-size: 14px;
-  }
+  .modal-content { max-width: 100%; height: auto; border-radius: 16px; }
+  .product-name { font-size: 14px; }
+  .header-text h1 { font-size: 18px; }
 }
 
 /* ===== ANIMATION ===== */
 @keyframes slideUp {
-  from {
-    transform: translateY(40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 </style>
 </head>
 
 <body>
-
 <div class="modal">
   <div class="modal-content">
 
+    <!-- HEADER -->
     <div class="header">
-      <h1>Nextview Technologies Pvt Ltd</h1>
-      <p>Select product to download PDF</p>
+      <img src="logo.png" alt="Company Logo">
+      <div class="header-text">
+        <h1>Nextview Technologies Pvt Ltd</h1>
+        <p>Select product to download PDF</p>
+      </div>
     </div>
 
     <!-- PRODUCTS -->
-    <div class="product">
-      <div class="product-left">
+
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
         <i class="fa-solid fa-tv icon"></i>
         <div class="product-name">Smart TV</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
-      <a class="download-btn" href="pdf/NextView TV MRP only.pdf" download>Download PDF</a>
+      <div class="dropdown">
+        <div class="dropdown-item">TV 32" <a class="download-btn" href="pdf/NextView TV MRP only.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 40" <a class="download-btn" href="pdf/NextView TV MRP only.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 55" <a class="download-btn" href="pdf/SmartTV_55.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 65" <a class="download-btn" href="pdf/SmartTV_65.pdf" download>Download PDF</a></div>
+      </div>
     </div>
 
-    <div class="product">
-      <div class="product-left">
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
         <i class="fa-solid fa-display icon"></i>
         <div class="product-name">Digital Signage</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
-      <a class="download-btn" href="pdf/Price List_Standee.pdf" download>Download PDF</a>
+      <div class="dropdown">
+        <div class="dropdown-item">32" <a class="download-btn" href="pdf/DigitalSignage_32.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">43" <a class="download-btn" href="pdf/DigitalSignage_43.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">55" <a class="download-btn" href="pdf/DigitalSignage_55.pdf" download>Download PDF</a></div>
+      </div>
     </div>
 
-    <div class="product">
-      <div class="product-left">
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
         <i class="fa-solid fa-droplet icon"></i>
         <div class="product-name">Water Purifier</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
-      <a class="download-btn" href="pdf/Price List_Standee.pdf" download>Download PDF</a>
+      <div class="dropdown">
+        <div class="dropdown-item">Car <a class="download-btn" href="pdf/WaterPurifier_Car.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Home <a class="download-btn" href="pdf/WaterPurifier_Home.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Office <a class="download-btn" href="pdf/WaterPurifier_Office.pdf" download>Download PDF</a></div>
+      </div>
     </div>
 
-    <div class="product">
-      <div class="product-left">
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
         <i class="fa-solid fa-volume-high icon"></i>
         <div class="product-name">Speaker</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
-      <a class="download-btn" href="pdf/Price List_Standee.pdf" download>Download PDF</a>
+      <div class="dropdown">
+        <div class="dropdown-item">Small <a class="download-btn" href="pdf/Speaker_Small.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Medium <a class="download-btn" href="pdf/Speaker_Medium.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Party <a class="download-btn" href="pdf/Speaker_Party.pdf" download>Download PDF</a></div>
+      </div>
     </div>
 
-    <div class="product">
-      <div class="product-left">
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
         <i class="fa-solid fa-snowflake icon"></i>
         <div class="product-name">Air Conditioner</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
-      <a class="download-btn" href="pdf/Price List_Standee.pdf" download>Download PDF</a>
+      <div class="dropdown">
+        <div class="dropdown-item">1 Ton <a class="download-btn" href="pdf/AC_1Ton.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">1.5 Ton <a class="download-btn" href="pdf/AC_1_5Ton.pdf" download>Download PDF</a></div>
+      </div>
     </div>
 
-    <div class="product">
-      <div class="product-left">
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
         <i class="fa-solid fa-video icon"></i>
         <div class="product-name">CCTV Camera</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
-      <a class="download-btn" href="pdf/Price List_Standee.pdf" download>Download PDF</a>
+      <div class="dropdown">
+        <div class="dropdown-item">Dome <a class="download-btn" href="pdf/CCTV_Dome.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Bullet <a class="download-btn" href="pdf/CCTV_Bullet.pdf" download>Download PDF</a></div>
+      </div>
     </div>
 
   </div>
 </div>
+
+<script>
+function toggleDropdown(productElement) {
+  const dropdown = productElement.querySelector('.dropdown');
+  const arrow = productElement.querySelector('.dropdown-arrow');
+  const isVisible = dropdown.style.display === 'flex';
+  
+  // Close all other dropdowns
+  document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
+  document.querySelectorAll('.dropdown-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+
+  // Toggle current dropdown
+  dropdown.style.display = isVisible ? 'none' : 'flex';
+  arrow.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+</script>
 
 </body>
 </html>
