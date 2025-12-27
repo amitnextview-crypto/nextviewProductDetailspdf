@@ -33,14 +33,53 @@ body {
   padding: 15px;
 }
 
-.modal-content {
+/* .modal-content {
   width: 100%;
   max-width: 500px;
   background: #ffffff;
   border-radius: 18px;
   padding: 20px;
   animation: slideUp 0.4s ease;
+} */
+ .modal-content {
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;        /* 🔥 FIXED HEIGHT */
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  overflow-y: auto;        /* 🔥 SCROLL ENABLE */
+  animation: slideUp 0.4s ease;
 }
+
+/* ===== PREMIUM SCROLLBAR ===== */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1f3c88, #3a6df0);
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #163172, #2952cc);
+}
+
+/* Firefox */
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #3a6df0 #f1f1f1;
+}
+
+
+
+
 
 /* ===== HEADER ===== */
 .header {
@@ -135,7 +174,7 @@ body {
 
 /* ===== MOBILE FIRST ===== */
 @media (max-width: 480px) {
-  .modal-content { max-width: 100%; height: auto; border-radius: 16px; }
+  .modal-content { max-width: 100%;  max-height: 90vh; padding: 10px; height: auto; border-radius: 16px; }
   .product-name { font-size: 14px; }
   .header-text h1 { font-size: 18px; }
 }
@@ -166,10 +205,11 @@ body {
 
     <!-- PRODUCTS -->
 
+    <!--smart tv-->
     <div class="product" onclick="toggleDropdown(this)">
       <div class="product-header">
         <i class="fa-solid fa-tv icon"></i>
-        <div class="product-name">Smart TV</div>
+        <div class="product-name">Smart TV Data Sheet</div>
         <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
       <div class="dropdown">
@@ -182,21 +222,63 @@ body {
 
     <div class="product" onclick="toggleDropdown(this)">
       <div class="product-header">
-        <i class="fa-solid fa-display icon"></i>
-        <div class="product-name">Digital Signage</div>
+        <i class="fa-solid fa-tags icon"></i>
+        <div class="product-name">Smart TV Price Lists</div>
         <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
       <div class="dropdown">
-        <div class="dropdown-item">32" <a class="download-btn" href="pdf/DigitalSignage_32.pdf" download>Download PDF</a></div>
-        <div class="dropdown-item">43" <a class="download-btn" href="pdf/DigitalSignage_43.pdf" download>Download PDF</a></div>
-        <div class="dropdown-item">55" <a class="download-btn" href="pdf/DigitalSignage_55.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 32" <a class="download-btn" href="pdf/NextView TV MRP only.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 40" <a class="download-btn" href="pdf/NextView TV MRP only.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 55" <a class="download-btn" href="pdf/SmartTV_55.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">TV 65" <a class="download-btn" href="pdf/SmartTV_65.pdf" download>Download PDF</a></div>
+      </div>
+    </div> <!--smart tv end-->
+
+<!-- Signage -->
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
+        <i class="fa-solid fa-display icon"></i>
+        <div class="product-name">Digital Signage Data Sheet</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-item">32 Nextview Final <a class="download-btn" href="pdf/signagedatasheet/32 Nextview Final.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Rosegold Wallmount 32(NVSG32PRGWM) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG32PRGWM).pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Black Pollstand 32(NVSG32SBPS) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG32SBPS).pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Silwerwhite Pollstand 32(NVSG32SWPS) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG32SWPS).pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Fix Longstand Model 43(NVSG43BBL) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG43BBL).pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Fixstand 43(NVSG43BFL) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG43BFL).pdf" download>Download PDF</a></div>
+      <div class="dropdown-item">Black Wheelstand 43(NVSG43BW) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG43BW).pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Rosegold Wallmount 43(NVSG43PRGWM) <a class="download-btn" href="pdf/signagedatasheet/Nextview_Model(NVSG43PRGWM).pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Black Wheelstand 55(NVSG4K55BW) <a class="download-btn" href="pdf/signagedatasheet/NVSG4K55BW.pdf" download>Download PDF</a></div>
       </div>
     </div>
 
     <div class="product" onclick="toggleDropdown(this)">
       <div class="product-header">
-        <i class="fa-solid fa-droplet icon"></i>
-        <div class="product-name">Water Purifier</div>
+        <i class="fa-solid fa-rectangle-list icon"></i>
+        <div class="product-name">Digital Signage Price Lists</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-item">32 Price List" <a class="download-btn" href="pdf/DigitalSignage_32.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">43 " <a class="download-btn" href="pdf/DigitalSignage_43.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">55" <a class="download-btn" href="pdf/DigitalSignage_55.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">32" <a class="download-btn" href="pdf/DigitalSignage_32.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">43" <a class="download-btn" href="pdf/DigitalSignage_43.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">55" <a class="download-btn" href="pdf/DigitalSignage_55.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">32" <a class="download-btn" href="pdf/DigitalSignage_32.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">43" <a class="download-btn" href="pdf/DigitalSignage_43.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">55" <a class="download-btn" href="pdf/DigitalSignage_55.pdf" download>Download PDF</a></div>
+      </div>
+    </div>  <!-- signage end  -->
+
+
+<!-- Air Purifier -->
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
+        <i class="fa-solid fa-wind icon"></i>
+        <div class="product-name">Air Purifier Data Sheet</div>
         <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
       <div class="dropdown">
@@ -205,11 +287,25 @@ body {
         <div class="dropdown-item">Office <a class="download-btn" href="pdf/WaterPurifier_Office.pdf" download>Download PDF</a></div>
       </div>
     </div>
+    <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
+        <i class="fa-solid fa-indian-rupee-sign icon"></i>
+        <div class="product-name">Air Purifier Price Lists</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-item">Car <a class="download-btn" href="pdf/WaterPurifier_Car.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Home <a class="download-btn" href="pdf/WaterPurifier_Home.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Office <a class="download-btn" href="pdf/WaterPurifier_Office.pdf" download>Download PDF</a></div>
+      </div>
+    </div>
+    <!-- air purifier end -->
 
+    <!-- Speaker -->
     <div class="product" onclick="toggleDropdown(this)">
       <div class="product-header">
         <i class="fa-solid fa-volume-high icon"></i>
-        <div class="product-name">Speaker</div>
+        <div class="product-name">Speaker Data Sheet</div>
         <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
       <div class="dropdown">
@@ -219,10 +315,25 @@ body {
       </div>
     </div>
 
+   <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
+        <i class="fa-solid fa-file-invoice-dollar icon"></i>
+        <div class="product-name">Speaker Price Lists</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-item">Small <a class="download-btn" href="pdf/Speaker_Small.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Medium <a class="download-btn" href="pdf/Speaker_Medium.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Party <a class="download-btn" href="pdf/Speaker_Party.pdf" download>Download PDF</a></div>
+      </div>
+    </div>
+    <!-- speaker end -->
+
+    <!-- AC -->
     <div class="product" onclick="toggleDropdown(this)">
       <div class="product-header">
         <i class="fa-solid fa-snowflake icon"></i>
-        <div class="product-name">Air Conditioner</div>
+        <div class="product-name">Air Conditioner Data Sheet</div>
         <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
       <div class="dropdown">
@@ -230,11 +341,24 @@ body {
         <div class="dropdown-item">1.5 Ton <a class="download-btn" href="pdf/AC_1_5Ton.pdf" download>Download PDF</a></div>
       </div>
     </div>
+     <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
+        <i class="fa-solid fa-list-check icon"></i>
+        <div class="product-name">Air Conditioner Price Lists</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-item">1 Ton <a class="download-btn" href="pdf/AC_1Ton.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">1.5 Ton <a class="download-btn" href="pdf/AC_1_5Ton.pdf" download>Download PDF</a></div>
+      </div>
+    </div>
+    <!-- ac end -->
 
+    <!-- CCTV -->
     <div class="product" onclick="toggleDropdown(this)">
       <div class="product-header">
         <i class="fa-solid fa-video icon"></i>
-        <div class="product-name">CCTV Camera</div>
+        <div class="product-name">CCTV Camera Data Sheet</div>
         <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
       </div>
       <div class="dropdown">
@@ -242,6 +366,18 @@ body {
         <div class="dropdown-item">Bullet <a class="download-btn" href="pdf/CCTV_Bullet.pdf" download>Download PDF</a></div>
       </div>
     </div>
+     <div class="product" onclick="toggleDropdown(this)">
+      <div class="product-header">
+        <i class="fa-solid fa-clipboard-list icon"></i>
+        <div class="product-name">CCTV Camera Price Lists</div>
+        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown-item">Dome <a class="download-btn" href="pdf/CCTV_Dome.pdf" download>Download PDF</a></div>
+        <div class="dropdown-item">Bullet <a class="download-btn" href="pdf/CCTV_Bullet.pdf" download>Download PDF</a></div>
+      </div>
+    </div>
+    <!-- cctv end -->
 
   </div>
 </div>
